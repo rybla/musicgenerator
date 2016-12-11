@@ -1,0 +1,57 @@
+var o = 2;
+var scale = scalecm;
+
+var mel = [
+	2,5,3,7
+];
+
+
+for(var i = 0; i < 10; i++) {
+	for(var j = 0; j < 4; j++) {
+		var a = mel[j];
+
+		// phrase length = 12/8 = 1.5
+
+		playTone(scale,o,a,time/8); pause(time/8);
+		playTone(scale,o,a+2,time/8); pause(time/8);
+		
+		playTone(scale,o,a+4,time/8); pause(time/8);
+		playTone(scale,o,a+2,time/8); pause(time/8);
+		playTone(scale,o,a+4,time/8); pause(time/8);
+		playTone(scale,o,a+2,time/8); pause(time/8);
+
+		//
+
+		a+=1;
+
+		playTone(scale,o,a,time/8); pause(time/8);
+		playTone(scale,o,a+2,time/8); pause(time/8);
+		
+		playTone(scale,o,a+4,time/4); pause(time/4);
+		playTone(scale,o,a+2,time/8); pause(time/8);
+		playTone(scale,o,a,time/8); pause(time/8);
+
+		//
+
+		a+=2;
+
+		playTone(scale,o,a+6,time/8); pause(time/8);
+		playTone(scale,o,a+5,time/8); pause(time/8);
+		
+		playTone(scale,o,a+4,time/8); pause(time/8);
+		playTone(scale,o,a+3,time/8); pause(time/8);
+		playTone(scale,o,a+2,time/8); pause(time/8);
+		playTone(scale,o,a+1,time/8); pause(time/8);
+
+		//
+
+		a-=3;
+
+		playTone(scale,o,a+6,time/6); pause(time/6);
+		playTone(scale,o,a+5,time/6); pause(time/6);
+		playTone(scale,o,a+6,time/6); pause(time/6);
+		
+		playTone(scale,o,a+4,time/8); pause(time/8);
+		playTone(scale,o,a+2,time/8); pause(time/8);
+	}
+}
