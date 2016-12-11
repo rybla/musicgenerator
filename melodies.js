@@ -71,6 +71,7 @@ var time = 0;
 var octaveparam = 0;
 var scaleparam;
 var phraselength = 0;
+var bounded;
 
 function playTune() {
 	getParams();
@@ -109,10 +110,14 @@ function playTune() {
 		} else if(l < lengthparams[3]) {
 			l = 0.03125;
 		}
-		console.log(previousnote);
 
 		previousnote += z;
-		playTone(scaleparam, octaveparam, previousnote, time*l);
+		if(bounded) {
+			playTone(scaleparam, octaveparam, z, time*l);
+		} else {
+			playTone(scaleparam, octaveparam, previousnote, time*l);
+		}
+		
 		pause(time*l);
 
 		x++;
@@ -168,6 +173,12 @@ function getParams() {
 	} else if(scaletext = "scalechrom") {
 		scaleparam = scalechrom;
 	}
+
+	var radios = document.getElementsByName('bounded');
+	if(radios[0].checked) bounded = true;
+	else if(radios[1].checked) bounded = false;
+
+	alert("bounded = " + bounded);
 	
 }
 
