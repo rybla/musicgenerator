@@ -80,20 +80,22 @@ function playTune() {
 		// possible: -3,-2,-1,0,1,2,3,4
 		var z = getRandomInt(0,99);
 		if(z < toneparams[0]) {
-			z = -3;
+			z = -4;
 		} else if(z < toneparams[1]) {
-			z = -2;
+			z = -3;
 		} else if(z < toneparams[2]) {
-			z = -1;
+			z = -2;
 		} else if(z < toneparams[3]) {
-			z = 0;
-		} else if(z < toneparams[4]) {
 			z = 1;
+		} else if(z < toneparams[4]) {
+			z = 0;
 		} else if(z < toneparams[5]) {
-			z = 2;
+			z = 1;
 		} else if(z < toneparams[6]) {
-			z = 3;
+			z = 2;
 		} else if(z < toneparams[7]) {
+			z = 3;
+		} else if(z < toneparams[8]) {
 			z = 4;
 		}
 		
@@ -129,8 +131,8 @@ function getParams() {
 	lengthparams = [];
 	var runningvalue = 0;
 	var value = 0;
-	for(var x = 0; x < 8; x++) {
-		value = parseInt(document.getElementById("%" + (x-3)).value);
+	for(var x = 0; x < 9; x++) {
+		value = parseInt(document.getElementById("%" + (x-4)).value);
 		toneparams[x] = value + runningvalue;
 		runningvalue += value;
 	}
