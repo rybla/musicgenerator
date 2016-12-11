@@ -54,7 +54,7 @@ function startTone(frequency)
     activenoteindex = getRandomInt(0,5);
 
     icons[activenoteindex].style.opacity = 1;
-    icon[activenoteindex].style.left = 350 + frequency/2 + "px";
+    icons[activenoteindex].style.left = 350 + frequency/2 + "px";
 }
 
 function stopTone()
