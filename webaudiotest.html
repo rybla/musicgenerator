@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="notes.js" type="text/javascript"></script>
+		<script src="webaudio_tools.js" type="text/javascript"></script>
+		<script src="frequencytorgb.js" type="text/javascript"></script>
+		<script src="melodies.js" type="text/javascript"></script>
+		<style type="text/css">
+			#icon {
+				left: 350px;
+				top: 50%;
+				position: fixed;
+			}
+
+			#params {
+				margin-top: 20px;
+			}
+
+			#container {
+				margin: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<h1>Music</h1>
+			<div id="params">
+				<h3>Tone Parameters</h3>
+				<p>% -3: <input id="%-3"type="text" value="10"></p>
+				<p>% -2: <input id="%-2"type="text" value="10"></p>
+				<p>% -1: <input id="%-1"type="text" value="10"></p>
+				<p>% 0: <input id="%0"type="text" value="10"></p>
+				<p>% 1: <input id="%1"type="text" value="15"></p>
+				<p>% 2: <input id="%2"type="text" value="15"></p>
+				<p>% 3: <input id="%3"type="text" value="15"></p>
+				<p>% 4: <input id="%4"type="text" value="15"></p>
+
+				<h3>Length Parameters</h3>
+				<p>% half: <input id="%l0"type="text" value="10"></p>
+				<p>% quarter: <input id="%l1"type="text" value="30"></p>
+				<p>% eight: <input id="%l2"type="text" value="50"></p>
+				<p>% sixteenth: <input id="%l3"type="text" value="10"></p>
+
+				<h3>Other Parameters</h3>
+				<p>time: <input id="time"type="text" value="2500"></p>
+				<p>scale: <input id="scale"type="text" value="scalecm"></p>
+				<p>phrase length: <input id="phraselength"type="text" value="64"></p>
+				<p>octave: <input id="octave"type="text" value="3"></p>
+
+			</div>
+			<div id="logs">
+				<h3>Logs</h3>
+				<div id="soundStatus"></div>
+				<div id="toneParamStatus"></div>
+				<div id="lengthParamStatus"></div>
+			</div>
+			
+			<div id="controls">
+				<h3>Controls</h3>
+				<button onclick="playTune()">Tune</button>
+				<button onclick="runningdelay = 0;">Reset</button>
+			</div>
+			<div id="display">
+				<img src="icon.jpg" id="icon">
+			</div>
+			<script type="text/javascript">
+				var icon = document.getElementById("icon");
+
+				// getParams();
+
+				// for(var x = 0; x < toneparams.length; x++) {
+				// 		console.log("toneparams["+x+"]: " + toneparams[x]);
+				// }
+
+				// for(var x = 0; x < lengthparams.length; x++) {
+				// 		console.log("lengthparams["+x+"]: " + lengthparams[x]);
+				// }
+			</script>
+		</div>
+	</body>
+</html>
