@@ -25,6 +25,8 @@ function initAudio()
     }
 }
 
+var activenoteindex = -1;
+
 // Set the frequency of the oscillator and start it running.
 function startTone(frequency)
 {
@@ -41,8 +43,18 @@ function startTone(frequency)
     amp.gain.linearRampToValueAtTime(0.5, audioContext.currentTime + 0.1);
     
     writeMessageToID( "soundStatus", "<p>Play tone at frequency = " + frequency  + "</p>");
-    icon.style.opacity = 
-    icon.style.left = 350 + frequency/2 + "px";
+
+    if(activenoteindex == -1) {
+    	activenoteindex = getRandomInt(0,5);
+    	document.getElementById("noteblack").style.opacity = 0;
+    } else {
+    	icons[activenoteindex].style.opacity = 0;
+    }
+
+    activenoteindex = getRandomInt(0,5);
+
+    icons[activenoteindex].style.opacity = 1;
+    icon[activenoteindex].style.left = 350 + frequency/2 + "px";
 }
 
 function stopTone()

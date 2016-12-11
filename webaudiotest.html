@@ -10,6 +10,7 @@
 				top: 50%;
 				position: fixed;
 				opacity: 0;
+				height: 60px;
 			}
 
 			#noteblack {
@@ -67,17 +68,16 @@
 				<button onclick="runningdelay = 0;">Reset</button>
 			</div>
 			<div id="display">
-				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/noteblack.png" id="noteblack" class="note">
+				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/noteblack.png" id="noteblack">
 				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/note0.png" id="note0" class="note">
 				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/note1.png" id="note1" class="note">
 				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/note2.png" id="note2" class="note">
 				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/note3.png" id="note3" class="note">
 				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/note4.png" id="note4" class="note">
 				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/note5.png" id="note5" class="note">
-				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/note6.png" id="note6" class="note">
 			</div>
 			<script type="text/javascript">
-				var icons = document.getElementsByName("icon");
+				var icons = document.getElementsByClassName("note");
 
 				// getParams();
 
