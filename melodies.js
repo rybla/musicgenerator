@@ -177,8 +177,6 @@ function getParams() {
 	var radios = document.getElementsByName('bounded');
 	if(radios[0].checked) bounded = true;
 	else if(radios[1].checked) bounded = false;
-
-	alert("bounded = " + bounded);
 	
 }
 
