@@ -41,6 +41,7 @@ function startTone(frequency)
     amp.gain.linearRampToValueAtTime(0.5, audioContext.currentTime + 0.1);
     
     writeMessageToID( "soundStatus", "<p>Play tone at frequency = " + frequency  + "</p>");
+    icon.style.opacity = 
     icon.style.left = 350 + frequency/2 + "px";
 }
 
