@@ -95,6 +95,9 @@ function note(scale,o,i) {
 			i += length;
 		}	
 	}
+
+	if(o > scale.length-1) o--;
+	if(o < 0) o++;
 	// console.log(i)
 	return scale[o][i];
 }

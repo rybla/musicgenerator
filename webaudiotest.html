@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/notes.js" type="text/javascript"></script>
-		<script src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/webaudio_tools.js" type="text/javascript"></script>
-		<script src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/melodies.js" type="text/javascript"></script>
+		<script src="notes.js" type="text/javascript"></script>
+		<script src="webaudio_tools.js" type="text/javascript"></script>
+		<script src="melodies.js" type="text/javascript"></script>
 		<style type="text/css">
 			.note {
 				left: 350px;
-				top: 50%;
+				top: 200px;
 				position: fixed;
 				opacity: 0;
 				height: 60px;
+			}
+
+			#display {
+				left: 340px;
+				top: 190px;
+				width: 60%;
+				height: 80px;
+				position: fixed;
+				background-color: black;
 			}
 
 			#noteblack {
@@ -64,17 +73,16 @@
 			
 			<div id="controls">
 				<h3>Controls</h3>
-				<button onclick="playTune()">Tune</button>
-				<button onclick="runningdelay = 0;">Reset</button>
+				<button onclick="playTune(); runningdelay = 0;">Tune</button>
 			</div>
 			<div id="display">
-				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/noteblack.png" id="noteblack">
-				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/note0.png" id="note0" class="note">
-				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/note1.png" id="note1" class="note">
-				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/note2.png" id="note2" class="note">
-				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/note3.png" id="note3" class="note">
-				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/note4.png" id="note4" class="note">
-				<img src="https://raw.githubusercontent.com/Riib11/musicgenerator/master/note5.png" id="note5" class="note">
+				<img src="noteblack.png" id="noteblack">
+				<img src="note0.png" id="note0" class="note">
+				<img src="note1.png" id="note1" class="note">
+				<img src="note2.png" id="note2" class="note">
+				<img src="note3.png" id="note3" class="note">
+				<img src="note4.png" id="note4" class="note">
+				<img src="note5.png" id="note5" class="note">
 			</div>
 			<script type="text/javascript">
 				var icons = document.getElementsByClassName("note");
