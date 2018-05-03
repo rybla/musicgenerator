@@ -1,9 +1,9 @@
-<!DOCTYPE html>
 <html>
 	<head>
-		<script src="notes.js" type="text/javascript"></script>
 		<script src="webaudio_tools.js" type="text/javascript"></script>
+		<script src="notes.js" type="text/javascript"></script>
 		<script src="melodies.js" type="text/javascript"></script>
+		<script src="patterns.js" type="text/javascript"></script>
 		<style type="text/css">
 			.note {
 				left: 350px;
@@ -38,17 +38,17 @@
 	<body>
 		<div id="container">
 			<h1>Music</h1>
-			<div id="params">
+			<!-- <div id="params">
 				<h3>Tone Parameters</h3>
-				<p>% -4: <input id="%-4"type="text" value="25"></p>
-				<p>% -3: <input id="%-3"type="text" value="0"></p>
-				<p>% -2: <input id="%-2"type="text" value="25"></p>
-				<p>% -1: <input id="%-1"type="text" value="0"></p>
-				<p>% 0: <input id="%0"type="text" value="0"></p>
-				<p>% 1: <input id="%1"type="text" value="0"></p>
-				<p>% 2: <input id="%2"type="text" value="25"></p>
-				<p>% 3: <input id="%3"type="text" value="0"></p>
-				<p>% 4: <input id="%4"type="text" value="25"></p>
+				<p>% -4: <input id="%-4"type="text" value="10"></p>
+				<p>% -3: <input id="%-3"type="text" value="10"></p>
+				<p>% -2: <input id="%-2"type="text" value="10"></p>
+				<p>% -1: <input id="%-1"type="text" value="10"></p>
+				<p>% 0: <input id="%0"type="text" value="10"></p>
+				<p>% 1: <input id="%1"type="text" value="10"></p>
+				<p>% 2: <input id="%2"type="text" value="10"></p>
+				<p>% 3: <input id="%3"type="text" value="10"></p>
+				<p>% 4: <input id="%4"type="text" value="10"></p>
 
 				<h3>Length Parameters</h3>
 				<p>% half: <input id="%l0"type="text" value="10"></p>
@@ -58,12 +58,12 @@
 
 				<h3>Other Parameters</h3>
 				<p>time: <input id="time"type="text" value="2500"></p>
-				<p>scale: <input id="scale"type="text" value="scalecm"></p>
+				<p>scale: <input id="scale"type="text" value="scale_cmajor"></p>
 				<p>phrase length: <input id="phraselength"type="text" value="64"></p>
 				<p>octave: <input id="octave"type="text" value="3"></p>
 				<p>Bounded range: <input type="radio" name="bounded" value="true" checked>Bounded  <input type="radio" name="bounded" value="false">Unbounded</p>
 
-			</div>
+			</div> -->
 			<div id="logs">
 				<h3>Logs</h3>
 				<div id="soundStatus"></div>

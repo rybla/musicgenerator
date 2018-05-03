@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<title>Music with Smidgen</title>
+		<h3>Music with Smidgen</h3>
+
+		<p><button onclick="createMidi()">Generate Midi</button></p>
+		<p>Output: </p>
+		<p id="output"></p>
+	</body>
+	<head>
+		<script type="text/javascript" src="jquery-min.js"></script>
+		<script type="text/javascript" src="jsmidgen.js"></script>
+		<script type="text/javascript" src="createtracks.js"></script>
+		<script type="text/javascript" src="filemanagement.js"></script>
+		<script type="text/javascript">
+
+			function createMidi() {
+				var file = new Midi.File();
+				var track = new Midi.Track();
+				file.addTrack(createTrack(track));
+
+				document.getElementById("output").innerHTML = file.toBytes();
+
+				copyToClipboard("output");
+
+				// fs.writeFileSync('test.mid', file.toBytes(), 'binary');
+			}
+			
+		</script>
+	</head>
+</html>

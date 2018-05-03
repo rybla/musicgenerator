@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<script type="text/javascript" src="musictextgenerator.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<style type="text/css">
+			#output {
+				position: absolute;
+				margin: 0px;
+				padding: 15px;
+				left: 50%;
+				top: 10%;
+				border: solid black 1px;
+				width: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<title>Music Generator - Text Method</title>
+		<h2>Music Generator - Text Method</h2>
+		<div id="inputs">
+			<h3>General Params</h3>
+			<table>
+				<tr>
+					<td>Length of Phrase:</td>
+					<td><input type="text" id="lengthofphrase" value=32></td>
+				</tr>
+				<tr>
+					<td>Bounded:</td>
+					<td>True: <input type="radio" name="bounded" value=true checked> False: <input type="radio" name="bounded" value=false></td>
+				</tr>
+			</table>
+			
+			<h3>Tones</h3>
+			<table>
+				<tr>
+					<td>± 6 Tone Volitility:</td>
+					<td><input type="text" id="tonevolitility6" value=1></td>
+				</tr>
+				<tr>
+					<td>± 5 Tone Volitility:</td>
+					<td><input type="text" id="tonevolitility5" value=1></td>
+				</tr>
+				<tr>
+					<td>± 4 Tone Volitility:</td>
+					<td><input type="text" id="tonevolitility4" value=1></td>
+				</tr>
+				<tr>
+					<td>± 3 Tone Volitility:</td>
+					<td><input type="text" id="tonevolitility3" value=1></td>
+				</tr>
+				<tr>
+					<td>± 2 Tone Volitility:</td>
+					<td><input type="text" id="tonevolitility2" value=1></td>
+				</tr>
+				<tr>
+					<td>± 1 Tone Volitility:</td>
+					<td><input type="text" id="tonevolitility1" value=1></td>
+				</tr>
+				<tr>
+					<td>± 0 Tone Volitility:</td>
+					<td><input type="text" id="tonevolitility0" value=1></td>
+				</tr>
+			</table>
+
+			<h3>Durations</h3>
+			<table>
+				<tr>
+					<td>Whole Volitility:</td>
+					<td><input type="text" id="duration0" value=1></td>
+				</tr>
+				<tr>
+					<td>Half Volitility:</td>
+					<td><input type="text" id="duration1" value=1></td>
+				</tr>
+				<tr>
+					<td>Quarter Volitility:</td>
+					<td><input type="text" id="duration2" value=1></td>
+				</tr>
+				<tr>
+					<td>Eighth Volitility:</td>
+					<td><input type="text" id="duration3" value=1></td>
+				</tr>
+			</table>
+
+			<br>
+			<br>
+			
+			<button onclick="genMusictText();">Generate Music Text</button>
+		</div>
+
+		<div id="output">
+			<p>Output (tone, duration): </p>
+			<p id="outputpar"><p>
+		</div>
+	</body>
+</html>

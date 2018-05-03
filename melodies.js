@@ -74,67 +74,119 @@ function playTone(scale,octave,index,duration) {
 	runningdelay += duration;
 	setTimeout(stopTone, runningdelay);
 }
-var runningdelay = 0;
 
-function pause(duration) {
-	runningdelay += duration;	
+function playTone(noteorarray,duration,isarray) {
+	if(isarray) {
+		frequency = noteorarray;
+		// console.log(frequency + ":" + octave + "," + index);
+		setTimeout(startTone, runningdelay, frequency);
+		runningdelay += duration;
+		setTimeout(stopTone, runningdelay);	
+	// } else if(noteorarray.length > 0) {
+	} else {
+		for(var x = 0; x < noteorarray.length; x++) {
+			playTone(noteorarray[x],duration);
+		}
+	}
+	
 }
 
-var time = 0;
+var runningdelay = 0;
+
+var totaltonepercents;
+var totallengthpercents;
+
+var time = 300;
 
 var octaveparam = 0;
 var scaleparam;
 var phraselength = 0;
 var bounded;
 
+var takinginput = false;
+
 function playTune() {
-	getParams();
+	// getParams();
 	var previousnote = 0;
 	var x = 0;
-	while(x < phraselength) {
-		// possible: -3,-2,-1,0,1,2,3,4
-		var z = getRandomInt(0,99);
-		if(z < toneparams[0]) {
-			z = -4;
-		} else if(z < toneparams[1]) {
-			z = -3;
-		} else if(z < toneparams[2]) {
-			z = -2;
-		} else if(z < toneparams[3]) {
-			z = 1;
-		} else if(z < toneparams[4]) {
-			z = 0;
-		} else if(z < toneparams[5]) {
-			z = 1;
-		} else if(z < toneparams[6]) {
-			z = 2;
-		} else if(z < toneparams[7]) {
-			z = 3;
-		} else if(z < toneparams[8]) {
-			z = 4;
-		}
-		
-		var l = getRandomInt(0,99);
-		if(l < lengthparams[0]) {
-			l = 0.25;
-		} else if(l < lengthparams[1]) {
-			l = 0.125;
-		} else if(l < lengthparams[2]) {
-			l = 0.0625;
-		} else if(l < lengthparams[3]) {
-			l = 0.03125;
-		}
 
-		previousnote += z;
-		if(bounded) {
-			playTone(scaleparam, octaveparam, z, time*l);
-		} else {
-			playTone(scaleparam, octaveparam, previousnote, time*l);
-		}
-		
-		pause(time*l);
+	var s1;
+	var s2;
+	// var basenote = getRandomInt(-6,6);
+	var basenote = 0;
 
-		x++;
+	var s1 = scaleup(scale_cmajor, basenote, 2, 4, 2);
+	var s2 = scaledown(scale_cminor, basenote, 2, 4, 2);
+
+	console.log(s1);
+	console.log(s2);
+
+	for(var repeats = 0; repeats < 4; repeats++) {
+		basenote-=2;
+		s2 = scaleup(scale_cminor, basenote, 2, 4, 2);
+		for(var j = 0; j < s2.length; j++) { playTone(s2[j],time/4, true); }
+		basenote++;
+		
+		s2 = scaleup(scale_cminor, basenote, 2, 4, 2);
+		for(var j = 0; j < s2.length; j++) { playTone(s2[j+1],time/3, true); }
+		basenote++;
+		
+		s2 = scaleup(scale_cminor, basenote, 2, 4, 2);
+		for(var j = 0; j < s2.length; j++) { playTone(s2[j],time/4, true); }	
+		basenote++;
+
+		for(var j = 0; j < s2.length; j++) { playTone(s2[s2.length-1-j],time/2, true); }
+		for(var j = 0; j < s2.length; j++) { playTone(s2[s2.length-1-j+1],time/3, true); }
+		for(var j = 0; j < s2.length; j++) { playTone(s2[s2.length-1-j+2],time/4, true); }	
+	}
+
+	if(takinginput) {
+		while(x < phraselength) {
+			// possible: -3,-2,-1,0,1,2,3,4
+			var z = getRandomInt(0,totaltonepercents);
+			if(z < toneparams[0]) {
+				z = -4;
+			} else if(z < toneparams[1]) {
+				z = -3;
+			} else if(z < toneparams[2]) {
+				z = -2;
+			} else if(z < toneparams[3]) {
+				z = 1;
+			} else if(z < toneparams[4]) {
+				z = 0;
+			} else if(z < toneparams[5]) {
+				z = 1;
+			} else if(z < toneparams[6]) {
+				z = 2;
+			} else if(z < toneparams[7]) {
+				z = 3;
+			} else if(z < toneparams[8]) {
+				z = 4;
+			}
+			
+			var l = getRandomInt(0,totaltonepercents);
+			if(l < lengthparams[0]) {
+				l = 0.25;
+			} else if(l < lengthparams[1]) {
+				l = 0.125;
+			} else if(l < lengthparams[2]) {
+				l = 0.0625;
+			} else if(l < lengthparams[3]) {
+				l = 0.03125;
+			}
+
+			previousnote += z;
+			if(bounded) {
+				playTone(scaleparam, octaveparam, z, time*l);
+			} else {
+				playTone(scaleparam, octaveparam, previousnote, time*l);
+			}
+			
+			pause(time*l);
+
+			x++;
+	}
+	
 	}
 
 }
@@ -156,11 +208,13 @@ function getParams() {
 		runningvalue += value;
 	}
 
-	if(runningvalue != 100) { 
-		writeMessageToID( "toneParamStatus", "<p>Tones %'s don't add to 100%</p>"); 
-	} else {
-		writeMessageToID( "toneParamStatus", ""); 
-	}
+	totaltonepercents = runningvalue;
+
+	// if(runningvalue != 100) { 
+	// 	writeMessageToID( "toneParamStatus", "<p>Tones %'s don't add to 100%</p>"); 
+	// } else {
+	// 	writeMessageToID( "toneParamStatus", ""); 
+	// }
 
 	runningvalue = 0;
 	value = 0;
@@ -171,21 +225,23 @@ function getParams() {
 		runningvalue += value;
 	}
 
-	if(runningvalue != 100) { 
-		writeMessageToID( "lengthParamStatus", "<p>Length %'s don't add to 100%</p>"); 
-	} else {
-		writeMessageToID( "lengthParamStatus", ""); 
-	}
+	totallengthpercents = runningvalue;
+
+	// if(runningvalue != 100) { 
+	// 	writeMessageToID( "lengthParamStatus", "<p>Length %'s don't add to 100%</p>"); 
+	// } else {
+	// 	writeMessageToID( "lengthParamStatus", ""); 
+	// }
 
 	octaveparam = parseInt(document.getElementById("octave").value);
 	time = parseInt(document.getElementById("time").value);
 	phraselength = parseInt(document.getElementById("phraselength").value);
 
 	var scaletext = document.getElementById("scale").value;
-	if(scaletext == "scalecm") {
-		scaleparam = scalecm;
-	} else if(scaletext = "scalechrom") {
-		scaleparam = scalechrom;
+	if(scaletext == "scale_cmajor") {
+		scaleparam = scale_cmajor;
+	} else if(scaletext = "scale_chrom") {
+		scaleparam = scale_chrom;
 	}
 
 	var radios = document.getElementsByName('bounded');
